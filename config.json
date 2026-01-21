@@ -3,15 +3,15 @@
     {
         "input_data":
         {
-            "raw_data":"data\\heart_disease_health_indicators_BRFSS2015.csv",
-            "test_data":"data\\heart_disease_raw_test_set.csv"
+            "raw_data":"data/heart_disease_health_indicators_BRFSS2015.csv",
+            "test_data":"data/heart_disease_raw_test_set.csv"
 
         },
         "output_paths":
         {
-            "scaler": "models\\scaler\\scaler.pkl",
+            "scaler": "models/scaler/scaler.pkl",
             "models": "models",
-            "val_metrics_output": "metrics\\detailed_metrics.pkl"
+            "val_metrics_output": "metrics/detailed_metrics.pkl"
         }
     },
 "model_features": [

@@ -1,0 +1,22 @@
+{
+    "paths":
+    {
+        "input_data":
+        {
+            "raw_data":"D:\\BITS\\Sem1\\Lectures\\machine learning\\assignment 2\\project_folder\\data\\heart_disease_health_indicators_BRFSS2015.csv",
+            "test_data":"D:\\BITS\\Sem1\\Lectures\\machine learning\\assignment 2\\project_folder\\data\\heart_disease_raw_test_set.csv"
+
+        },
+        "output_paths":
+        {
+            "scaler": "D:\\BITS\\Sem1\\Lectures\\machine learning\\assignment 2\\project_folder\\models\\scaler\\scaler.pkl",
+            "models": "D:\\BITS\\Sem1\\Lectures\\machine learning\\assignment 2\\project_folder\\models",
+            "val_metrics_output": "D:\\BITS\\Sem1\\Lectures\\machine learning\\assignment 2\\project_folder\\metrics\\detailed_metrics.pkl"
+        }
+    },
+"model_features": [
+    "HighBP", "HighChol", "BMI", "Smoker", "Stroke", "Diabetes", 
+    "PhysActivity", "Fruits", "Veggies", "HvyAlcoholConsump", 
+    "GenHlth", "MentHlth", "PhysHlth", "DiffWalk", "Age", "Sex"
+]
+}

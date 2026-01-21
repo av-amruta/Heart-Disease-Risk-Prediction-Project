@@ -7,3 +7,4 @@ matplotlib
 xgboost
 seaborn
 ipykernel
+altair<5

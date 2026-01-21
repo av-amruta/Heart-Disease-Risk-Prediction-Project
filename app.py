@@ -7,10 +7,19 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import accuracy_score, roc_auc_score, precision_score, recall_score, f1_score, matthews_corrcoef, confusion_matrix, classification_report
 import json
+import os
 
 # Load configuration file containing model paths and feature list
 with open("config.json", "r") as f:
     config = json.load(f)
+
+# Base directory of the script
+BASE_DIR = os.path.dirname(__file__)
+
+# Paths relative to the repo
+model_path = os.path.join(BASE_DIR, config['paths']['output_paths']['models'])
+scaler_path = os.path.join(BASE_DIR, config['paths']['output_paths']['scaler'])
+val_metrics_path = os.path.join(BASE_DIR, config['paths']['output_paths']['val_metrics_output'])
 
 # Set Streamlit page configuration for the web application
 st.set_page_config(page_title="Heart Disease Analysis Portal", layout="wide")
@@ -23,18 +32,18 @@ model_path = config['paths']['output_paths']['models']
 @st.cache(allow_output_mutation=True)
 def load_assets():
     """Load all trained models, scaler, and metrics from saved pickle files"""
-    scaler = joblib.load(config['paths']['output_paths']['scaler'])
+    scaler = joblib.load(scaler_path)
     # Load all six trained models
     models = {
-        "Logistic Regression": joblib.load(f'{model_path}/logistic_regression.pkl'),
-        "Decision Tree": joblib.load(f'{model_path}/decision_tree.pkl'),
-        "KNN": joblib.load(f'{model_path}/knn.pkl'),
-        "Naive Bayes": joblib.load(f'{model_path}/naive_bayes.pkl'),
-        "Random Forest": joblib.load(f'{model_path}/random_forest.pkl'),
-        "XGBoost": joblib.load(f'{model_path}/xgboost.pkl')
+        "Logistic Regression": joblib.load(os.path.join(model_path, 'logistic_regression.pkl')),
+        "Decision Tree": joblib.load(os.path.join(model_path, 'decision_tree.pkl')),
+        "KNN": joblib.load(os.path.join(model_path, 'knn.pkl')),
+        "Naive Bayes": joblib.load(os.path.join(model_path, 'naive_bayes.pkl')),
+        "Random Forest": joblib.load(os.path.join(model_path, 'random_forest.pkl')),
+        "XGBoost": joblib.load(os.path.join(model_path, 'xgboost.pkl'))
     }
     # Load detailed validation metrics for model analysis
-    detailed_metrics = joblib.load(config['paths']['output_paths']['val_metrics_output'])
+    detailed_metrics = joblib.load(val_metrics_path)
     
     return scaler, models, detailed_metrics
 

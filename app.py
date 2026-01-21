@@ -29,7 +29,7 @@ SELECTED_FEATURES = config['model_features']
 model_path = config['paths']['output_paths']['models']
 
 # Cache the model loading to improve app performance and avoid reloading on each interaction
-@st.cache(allow_output_mutation=True)
+@st.cache_data
 def load_assets():
     """Load all trained models, scaler, and metrics from saved pickle files"""
     scaler = joblib.load(scaler_path)

@@ -17,16 +17,15 @@ with open("config.json", "r") as f:
 BASE_DIR = os.path.dirname(__file__)
 
 # Paths relative to the repo
-model_path = os.path.join(BASE_DIR, config['paths']['output_paths']['models'])
-scaler_path = os.path.join(BASE_DIR, config['paths']['output_paths']['scaler'])
-val_metrics_path = os.path.join(BASE_DIR, config['paths']['output_paths']['val_metrics_output'])
+model_path = config['paths']['output_paths']['models']
+scaler_path = config['paths']['output_paths']['scaler']
+val_metrics_path = config['paths']['output_paths']['val_metrics_output']
 
 # Set Streamlit page configuration for the web application
 st.set_page_config(page_title="Heart Disease Analysis Portal", layout="wide")
 
 # Load feature list and model path from configuration
 SELECTED_FEATURES = config['model_features']
-model_path = config['paths']['output_paths']['models']
 
 # Cache the model loading to improve app performance and avoid reloading on each interaction
 @st.cache_data
